@@ -20,9 +20,33 @@
   background-size: 100%;
 }
 .left.music_play{
- background: url(https://friend-check.playonwechat.com/static/images/music.png) no-repeat;
+  background: url(https://friend-check.playonwechat.com/static/images/music.png) no-repeat;
   background-size: 100%;
+  -webkit-animation: music 3s linear infinite;
+  animation: music 3s linear infinite;
+  -webkit-tap-highlight-color: transparent;
 }
+@-webkit-keyframes music{
+    0%{
+        -webkit-transform:rotate(0);
+        transform:rotate(0)
+    }
+    to{
+        -webkit-transform:rotate(-3turn);
+        transform:rotate(-3turn)
+    }
+}
+@keyframes music{
+    0%{
+        -webkit-transform:rotate(0);
+        transform:rotate(0)
+    }
+    to{
+        -webkit-transform:rotate(-3turn);
+        transform:rotate(-3turn)
+    }
+}
+
 .management .right{
     background: #34a8e0;
     color: #fff;
@@ -155,19 +179,19 @@ button::after{
     top:160rpx
 }
 .photo image:nth-child(16){
-    left:0rpx;
+    left:40rpx;
     top:80rpx
 }
 .photo image:nth-child(17){
-    left:80rpx;
+    left:120rpx;
     top:80rpx;
 }
 .photo image:nth-child(18){
-    left:160rpx;
+    left:200rpx;
     top:80rpx;
 }
 .photo image:nth-child(19){
-    left:240rpx;
+    left:280rpx;
     top:80rpx;
 }
 .photo image:nth-child(20){
@@ -187,11 +211,11 @@ button::after{
     top:80rpx;
 }
 .photo image:nth-child(24){
-    left:80rpx;
+    left:120rpx;
     top:0rpx;
 }
 .photo image:nth-child(25){
-    left:160rpx;
+    left:200rpx;
     top:0rpx;
 }
 .photo image:nth-child(26){

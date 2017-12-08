@@ -5,48 +5,29 @@ import tips from '../../utils/tips.js';
 
 Page({
   data: {
-    photos: [
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg',
-      'http://static.xyyxsns.com/uploads/ShapeAlbums/2017/12/07/1512625296_0669_5a28d4901058c.jpg'
-    ],
     move:true,
     position:1,//照片位置
     pw_id:0 //默认自己的
   },
-  onLoad: function () {
-    
+  onLoad: function (options) {
+    console.log("options:", options);
+    if (options.pw_id){
+      this.setData({
+        pw_id: options.pw_id
+      })
+    }
   },
   onShow:function(){
+    let that = this;
+    var music_play = app.data.music_play;
+    that.setData({
+      music_play: music_play
+    })
     wx.showToast({
       title: '加载中',
       icon: 'loading'
     })
-      let that = this;
+      
       // });
       app.getAuth(function () {
         let userInfo = wx.getStorageSync('userInfo');
@@ -57,7 +38,7 @@ Page({
           })
         },200)
         
-        // 请求
+        // 请求数据
         wx.request({
           url: apiurl + "photo/photo-wall-detail?sign=" + sign + '&operator_id=' + app.data.kid,
           data: {
@@ -72,26 +53,20 @@ Page({
             var status = res.data.status;
             if (status == 1) {
                 let photos = res.data.data.photos;
-                console.log(typeof (photos))
-                let demo= {}
-                if (photos.length==0){
-                    for (var i = 0; i <27; i++){
-                      demo.photo_url='../img/bg.jpg';
-                      demo.position=i;
-                      photos.push(demo);
-                      //将多个both对象pushgouwu数组
-                    }
-                    //console.log(photos)
-                    that.setData({
-                      self: res.data.data.self,
-                      photos: photos
-                    })
-                }else{
-                  that.setData({
-                    self: res.data.data.self,
-                    photos: res.data.data.photos
-                  })
+                let datas = [];
+                for(let i = 0;i <27;i++){
+                  
+                  if (photos[i]){
+                    datas.push(photos[i]);
+                  } else {
+                    datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'position': i+1})
+                  }
                 }
+                that.setData({
+                  photos:datas,
+                  self: res.data.data.self
+                })
+                console.log(that.data.photos);
                 
             } else {
               tips.alert(res.data.msg);
@@ -113,6 +88,25 @@ Page({
       urls: pictures // 需要预览的图片http链接列表
     })
   },
+  bindPlay: function () {
+    var that = this;
+
+    if (that.data.music_play == true) {
+      wx.pauseBackgroundAudio();
+      app.data.music_play = false;
+      that.setData({
+        music_play: false
+      })
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: app.data.dataUrl
+      })
+      app.data.music_play = true;
+      that.setData({
+        music_play: true
+      })
+    }
+  },
   management(){
     wx.navigateTo({
       url: '../setting/setting'
@@ -123,11 +117,44 @@ Page({
     let sign = wx.getStorageSync('sign');
     let photos = that.data.photos;
     let length = photos.length;
-    if (length>0){
-        
+    let arr = [];//当前上传的位置
+    console.log("length:", length);
+    if (length=27){  //不足27张，已拼完有删除掉的
+      for(let i = 0;i<length;i++){
+        console.log(photos[i].photo_url);
+          if (photos[i].photo_url =='https://gcdn.playonwechat.com/photo/bg.jpg'){
+            arr.push(photos[i].postion);
+            console.log('postion:',photos[26].postion);
+            that.setData({
+              position: arr[0]
+            })
+          }
+      }
+
+      // for (let i = 0; i < length; i++) {
+      //   console.log(photos[i].photo_url);
+      //   if (photos[i].photo_url != 'https://gcdn.playonwechat.com/photo/bg.jpg') {
+      //      tips.alert('照片墙已满，请先删除照片，再上传！');
+      //      return false;
+      //   }
+      // }
+      
+      
+    }else{ //未拼完
+      console.log('未拼完');
+      for (let i = 0; i < length; i++) {
+        if (photos[i].photo_url == 'https://gcdn.playonwechat.com/photo/bg.jpg') {
+          arr.push(photos[i].position);
+          that.setData({
+            position: arr[0]
+          })
+        }
+      }
     }
+    
+    console.log('arr:',arr);
     wx.showLoading({
-      title: '加载中',
+      title: '加载中'
     });
     // 上传 
     wx.chooseImage({
@@ -190,6 +217,48 @@ Page({
     })
     wx.hideLoading()
   },
+  mySelf(){
+    let that = this;
+    console.log('mySelf');
+    that.setData({
+      pw_id: 0
+    })
+    wx.request({
+      url: apiurl + "photo/photo-wall-detail?sign=" + sign + '&operator_id=' + app.data.kid,
+      data: {
+        pw_id: that.data.pw_id
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "GET",
+      success: function (res) {
+        console.log("照片墙信息:", res);
+        var status = res.data.status;
+        if (status == 1) {
+          let photos = res.data.data.photos;
+          let datas = [];
+          for (let i = 0; i < 27; i++) {
+
+            if (photos[i]) {
+              datas.push(photos[i]);
+            } else {
+              datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'position': i + 1 })
+            }
+          }
+          that.setData({
+            photos: datas,
+            self: res.data.data.self
+          })
+          console.log(that.data.photos);
+
+        } else {
+          tips.alert(res.data.msg);
+        }
+        wx.hideLoading()
+      }
+    })
+  },
   // 生成图片墙
   produce(){
     wx.showToast({
@@ -208,16 +277,57 @@ Page({
         console.log("生成图片墙:", res);
         var status = res.data.status;
         if (status == 1) {
+          console.log('poster:',res.data.data);
             let poster = res.data.data;
+            let posters = poster.split();
             wx.previewImage({
               current: poster, // 当前显示图片的http链接
-              urls: poster // 需要预览的图片http链接列表
+              urls: posters // 需要预览的图片http链接列表
             })
+            wx.hideLoading()
         } else {
           tips.alert(res.data.msg);
         }
+        
       }
     })
-    wx.hideLoading()
+  },
+  onShareAppMessage: function () {
+    let that = this;
+    // 获取照片墙pwid
+    wx.request({
+      url: apiurl + "photo/pw?sign=" + sign + '&operator_id=' + app.data.kid,
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "GET",
+      success: function (res) {
+        console.log("照片墙pwid:", res);
+        var status = res.data.status;
+        if (status == 1) {
+          that.setData({
+            pw_id: res.data.data
+          })
+          return {
+            title: "海报",
+            path: '/pages/index/index?pw_id=' + that.data.pw_id,
+            success: function (res) {
+              console.log(res);
+              console.log('/pages/index/index?pw_id=' + that.data.pw_id);
+              // 转发成功
+            },
+            fail: function (res) {
+              console.log(res);
+              // 转发失败
+            }
+          }
+        } else {
+          console.log(res.data.msg);
+        }
+        wx.hideLoading()
+      }
+
+    })
+   
   }
 })

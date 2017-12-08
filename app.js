@@ -9,7 +9,9 @@ App({
     sharecode: "",
     authStatic: false,
     loginStatic: false,
-    authSuccess: false
+    authSuccess: false,
+    dataUrl: "https://gcdn.playonwechat.com/photo/music.mp3",
+    music_play: true
   },
   onLaunch: function () {
 
@@ -19,6 +21,22 @@ App({
     //that.data.kid = 123; //123 464
     wx.setStorageSync('kid', that.data.kid); //that.data.kid
     this.getAuth();
+  },
+  onShow: function () {
+    var that = this;
+    var dataUrl = that.data.dataUrl;
+
+    wx.onBackgroundAudioStop(function () {
+      console.log("音乐停止，自动循环");
+      wx.playBackgroundAudio({
+        dataUrl: dataUrl
+      })
+    });
+
+    wx.playBackgroundAudio({
+      dataUrl: dataUrl
+    })
+
   },
   getAuth(cb) {
     // var that = this;

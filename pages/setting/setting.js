@@ -34,7 +34,7 @@ Page({
           function toDate(number) {
             var n = number * 1000;
             var date = new Date(n);
-            console.log("date", date)
+            //console.log("date", date)
             var y = date.getFullYear();
             var m = date.getMonth() + 1;
             m = m < 10 ? ('0' + m) : m;
