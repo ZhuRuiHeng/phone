@@ -12,8 +12,7 @@
     </view>
     <view class='notice'>注：自己可以上传多张，每个朋友只能上传一张</view>
     <view class='buttons'>
-        <view class='active' wx:if="{{self}}" bindtap='upPhoto'>上传照片</view>
-        <view class='active' wx:else bindtap='upPhoto'>上传照片</view>
+        <view class='active' bindtap='upPhoto'>上传照片</view>
         <view class='active' wx:if="{{self}}"><button form-type="submit" open-type='share'>邀请好友拼图</button></view>
         <view class='active' wx:if="{{self}}" bindtap='produce'>生成照片墙</view>
     </view>

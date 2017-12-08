@@ -6,7 +6,7 @@ import tips from '../../utils/tips.js';
 Page({
   data: {
     move:true,
-    position:1,//照片位置
+    postion:1,//照片位置
     pw_id:0 //默认自己的
   },
   onLoad: function (options) {
@@ -59,7 +59,7 @@ Page({
                   if (photos[i]){
                     datas.push(photos[i]);
                   } else {
-                    datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'position': i+1})
+                    datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'postion': i+1})
                   }
                 }
                 that.setData({
@@ -124,29 +124,20 @@ Page({
         console.log(photos[i].photo_url);
           if (photos[i].photo_url =='https://gcdn.playonwechat.com/photo/bg.jpg'){
             arr.push(photos[i].postion);
-            console.log('postion:',photos[26].postion);
+            console.log('postion:', photos[i].postion);
             that.setData({
-              position: arr[0]
+              postion: arr[0]
             })
           }
       }
-
-      // for (let i = 0; i < length; i++) {
-      //   console.log(photos[i].photo_url);
-      //   if (photos[i].photo_url != 'https://gcdn.playonwechat.com/photo/bg.jpg') {
-      //      tips.alert('照片墙已满，请先删除照片，再上传！');
-      //      return false;
-      //   }
-      // }
-      
-      
     }else{ //未拼完
       console.log('未拼完');
       for (let i = 0; i < length; i++) {
         if (photos[i].photo_url == 'https://gcdn.playonwechat.com/photo/bg.jpg') {
-          arr.push(photos[i].position);
+          arr.push(photos[i].postion);
+          console.log('postion:', photos[i].postion)
           that.setData({
-            position: arr[0]
+            postion: arr[0]
           })
         }
       }
@@ -190,7 +181,7 @@ Page({
                 data:{
                   pw_id: that.data.pw_id,
                   picture: that.data.picture,
-                  position: that.data.position
+                  position: that.data.postion
                 },
                 header: {
                   'content-type': 'application/json'
@@ -201,12 +192,14 @@ Page({
                   let status = res.data.status;
                   if (status==1){
                     console.log('上传成功！')
+                   
                   }else{
                     tips.alert(res.data.msg);
                   }
                   
                 }
               })
+
               // 添加照片
             } else {
               tips.alert(res.data.msg)
@@ -243,7 +236,7 @@ Page({
             if (photos[i]) {
               datas.push(photos[i]);
             } else {
-              datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'position': i + 1 })
+              datas.push({ 'photo_url': 'https://gcdn.playonwechat.com/photo/bg.jpg', 'postion': i + 1 })
             }
           }
           that.setData({
@@ -308,19 +301,7 @@ Page({
           that.setData({
             pw_id: res.data.data
           })
-          return {
-            title: "海报",
-            path: '/pages/index/index?pw_id=' + that.data.pw_id,
-            success: function (res) {
-              console.log(res);
-              console.log('/pages/index/index?pw_id=' + that.data.pw_id);
-              // 转发成功
-            },
-            fail: function (res) {
-              console.log(res);
-              // 转发失败
-            }
-          }
+
         } else {
           console.log(res.data.msg);
         }
@@ -328,6 +309,20 @@ Page({
       }
 
     })
+    return {
+      title: "快来一起制作照片墙",
+      path: '/pages/index/index?pw_id=' + that.data.pw_id,
+      success: function (res) {
+        console.log(res);
+        console.log('/pages/index/index?pw_id=' + that.data.pw_id);
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log(res);
+        // 转发失败
+      }
+    }
+    
    
   }
 })
