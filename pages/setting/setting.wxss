@@ -1,0 +1,60 @@
+page{
+  background: #e4e4e4;
+}
+.container{
+    overflow: hidden;
+    padding: 20rpx 20rpx 20rpx 0;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 26rpx;
+    background: #fff;
+    margin-bottom: 100rpx;
+}
+.item{
+    width: 33%;
+    position: relative;
+    padding: 20rpx 0 0 20rpx;
+    background: #fff;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.niceImg image{
+    width: 100%;
+}
+image.del{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  cursor: pointer;
+}
+.timeWho{
+  display: flex;
+  justify-content: flex-start;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #666;
+  margin-top: 6rpx;
+}
+.timeWho image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 6rpx;
+    margin-right: 10rpx;
+}
+.timeWho view{
+  font-size: 20rpx;
+}
+.button{
+   width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background: #34a8e0;
+    color: #fff;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+}
