@@ -8,7 +8,7 @@
     <view class='photo'>
         <image wx:for="{{photos}}" data-index='{{index+1}}' data-position='{{item.position}}' 
               class="small {{move==false?'ball':''}}" bindtap='prewImg' data-picture='{{item.photo_url}}'
-               mode='widthFix' src="{{item.photo_url}}" ></image>
+               mode='aspectFill' src="{{item.photo_url}}" ></image>
     </view>
     <view class='notice'>注：自己可以上传多张，每个朋友只能上传一张</view>
     <view class='buttons'>

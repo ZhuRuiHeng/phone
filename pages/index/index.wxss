@@ -2,6 +2,7 @@
 .container{
   font-size: 26rpx;
   overflow: hidden;
+  background-color: #e4e4e4;
 }
 .management{
     display: flex;
@@ -88,13 +89,15 @@ button::after{
 }
 .photo{
   position: relative;
-  width: 100%;
+  width: 710rpx;
   margin: 50rpx auto;
   height: 680rpx;
-  /* background: url(https://gcdn.playonwechat.com/photo/bg.png) no-repeat;
-  background-size: contain; */
+  /* background:#fff; */
+  background: url(https://gcdn.playonwechat.com/photo/bg.png) no-repeat;
+  background-size: contain; 
 }
 .photo image{
+  /* border:1px solid #ddd; */
    position:absolute;
     opacity:1;
     -webkit-transform:scale(2);
@@ -102,7 +105,10 @@ button::after{
     transform:scale(2);
     transition:opacity 2s,-webkit-transform 2s;
     transition:opacity 2s,transform 2s;
-    transition:opacity 2s,transform 2s,-webkit-transform 2s
+    transition:opacity 2s,transform 2s,-webkit-transform 2s;
+    /* border:1px solid #fff;  */
+    box-sizing: border-box;
+    background: pink;
 }
  .photo image.ball{
     opacity:1;
@@ -111,120 +117,120 @@ button::after{
     transform:scale(1);
 } 
 .photo image:first-child,.photo image:nth-child(2),.photo image:nth-child(3),.photo image:nth-child(4){
-    width:200rpx;
-    height:200rpx;
+    width:170rpx;
+    height:170rpx;
 }
 .photo image:nth-child(5),.photo image:nth-child(6),.photo image:nth-child(7),.photo image:nth-child(8),.photo image:nth-child(9),.photo image:nth-child(10),.photo image:nth-child(11),.photo image:nth-child(12),.photo image:nth-child(13),.photo image:nth-child(14),.photo image:nth-child(15),.photo image:nth-child(16),.photo image:nth-child(17),.photo image:nth-child(18),.photo image:nth-child(19),.photo image:nth-child(20),.photo image:nth-child(21),.photo image:nth-child(22),.photo image:nth-child(23),.photo image:nth-child(24),.photo image:nth-child(25),.photo image:nth-child(26),.photo image:nth-child(27){
-    width:80rpx;
-    height:80rpx;
+    width:66rpx;
+    height:66rpx;
 }
 .photo image:first-child{
-    left:280rpx;
-    top:160rpx;
+    left:268rpx;
+    top:157rpx;
 }
 .photo image:nth-child(2){
-    left:280rpx;
-    top:360rpx;
+    left:269rpx;
+    top:336rpx;
 }
 .photo image:nth-child(3){
-    left:80rpx;
-    top:160rpx;
+    left:88rpx;
+    top:157rpx;
 }
 .photo image:nth-child(4){
-    left:480rpx;
-    top:160rpx;
+    left:449rpx;
+    top:157rpx;
 }
 .photo image:nth-child(5){
-    left:340rpx;
-    top:559rpx;
+    left:322rpx;
+    top:516rpx;
 }
 .photo image:nth-child(6){
-    left:200rpx;
-    top:440rpx;
+    left:195rpx;
+    top:411rpx;
 }
 .photo image:nth-child(7){
-    left:480rpx;
-    top:440rpx;
+    left:448rpx;
+    top:409rpx;
 }
 .photo image:nth-child(8){
-    left:120rpx;
-    top:360rpx;
+    left:122rpx;
+    top:336rpx;
 }
 .photo image:nth-child(9){
-    left:200rpx;
-    top:360rpx;
+    left:195rpx;
+    top:336rpx;
 }
 .photo image:nth-child(10){
-    left:480rpx;
-    top:360rpx;
+    left:448rpx;
+    top:336rpx;
 }
 .photo image:nth-child(11){
-    left:559rpx;
-    top:360rpx;
+    left:520rpx;
+    top:336rpx;
 }
 .photo image:nth-child(12){
-    left:0rpx;
-    top:240rpx;
+    left:16rpx;
+    top:230rpx;
 }
 .photo image:nth-child(13){
-    left:679rpx;
-    top:240rpx;
+    left:627rpx;
+    top:229rpx;
 }
 .photo image:nth-child(14){
-    left:0rpx;
-    top:160rpx
+    left:16rpx;
+    top:155rpx
 }
 .photo image:nth-child(15){
-    left:679rpx;
-    top:160rpx
+    left:627rpx;
+    top:155rpx
 }
 .photo image:nth-child(16){
-    left:40rpx;
-    top:80rpx
+    left:16rpx;
+    top:82rpx;
 }
 .photo image:nth-child(17){
-    left:120rpx;
-    top:80rpx;
+    left:88rpx;
+    top:82rpx;
 }
 .photo image:nth-child(18){
-    left:200rpx;
-    top:80rpx;
+    left:162rpx;
+    top:82rpx;
 }
 .photo image:nth-child(19){
-    left:280rpx;
-    top:80rpx;
+    left:236rpx;
+    top:82rpx;
 }
 .photo image:nth-child(20){
-    left:400rpx;
-    top:80rpx;
+    left:406rpx;
+    top:82rpx;
 }
 .photo image:nth-child(21){
-    left:480rpx;
-    top:80rpx;
+    left:479rpx;
+    top:82rpx;
 }
 .photo image:nth-child(22){
-    left:559rpx;
-    top:80rpx;
+    left:552rpx;
+    top:82rpx;
 }
 .photo image:nth-child(23){
-    left:639rpx;
-    top:80rpx;
+    left:627rpx;
+    top:82rpx;
 }
 .photo image:nth-child(24){
-    left:120rpx;
-    top:0rpx;
+    left:88rpx;
+    top:12rpx;
 }
 .photo image:nth-child(25){
-    left:200rpx;
-    top:0rpx;
+    left:160rpx;
+    top:12rpx;
 }
 .photo image:nth-child(26){
     left:480rpx;
-    top:0rpx;
+    top:12rpx;
 }
 .photo image:nth-child(27){
-    left:559rpx;
-    top:0rpx;
+    left:553rpx;
+    top:12rpx;
 }
 @-webkit-keyframes an_photo{
     0%{
