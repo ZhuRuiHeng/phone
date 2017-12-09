@@ -46,7 +46,8 @@ Page({
             var second = date.getSeconds();
             minute = minute < 10 ? ('0' + minute) : minute;
             second = second < 10 ? ('0' + second) : second;
-            return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+            // return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+            return m + '-' + d + ' ' + h + ':' + minute + ':' + second;
           }
           for (var i = 0; i < res.data.data.length; i++) {
             res.data.data[i].add_time = toDate(res.data.data[i].add_time)

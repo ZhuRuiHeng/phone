@@ -8,11 +8,11 @@
     <view class='item' wx:for="{{photoList}}" wx:key="{{index}}" data-pic_id='{{item.pic_id}}'>
         <image class='del' bindtap='dels' data-pic_id='{{item.pic_id}}' src="https://gcdn.playonwechat.com/photo/close.png"></image>
         <view class='niceImg'>
-            <image src="{{item.url}}" mode='widthFix'></image>
+            <image src="{{item.url}}" mode='aspectFit'></image>
         </view>
         <view class='timeWho'>
-            <image src="{{item.avatarurl}}" mode='widthFix'></image>
-            <view>{{item.add_time}}分钟前</view>
+            <image src="{{item.avatarurl}}" mode='aspectFit'></image>
+            <view>{{item.add_time}}</view>
         </view>
     </view>
 </view>

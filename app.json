@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/indexs/indexs",
     "pages/setting/setting",
     "pages/more/more"
   ],
@@ -17,7 +18,7 @@
     "borderStyle": "transparent",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/indexs/indexs",
         "text": "首页",
         "iconPath": "/pages/img/home-icon.png",
         "selectedIconPath": "/pages/img/home-icon-active.png"
